@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteNoConfirm } from "@/app/server-actions";
+import { deleteSomething } from "@/app/server-actions";
 import { Button } from "./Button";
 
 type Props = {
@@ -23,7 +23,8 @@ export const NoConfirm = ({ id }: Props) => {
       </div>
 
       <div className="bg-white py-8 px-8 dark:bg-slate-900">
-        <form action={deleteNoConfirm} className="inline-block">
+        <form action={deleteSomething} className="inline-block">
+          <input type="hidden" name="type" value="no-confirm" />
           <input type="hidden" name="id" value={id} />
           <Button />
         </form>

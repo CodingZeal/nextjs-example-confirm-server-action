@@ -40,3 +40,11 @@ experimental: {
 - version of next, node, etc...
   - add .node-version
 - `useFormStatus` put in child component of `<form`, otherwise it does not seem to work
+- js confirm:
+  - show implementation with just action or onSubmit
+
+client side function passed to action `<form action={() => serverFunc()}>`
+
+```
+
+```
