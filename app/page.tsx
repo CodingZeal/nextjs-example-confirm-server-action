@@ -1,9 +1,11 @@
 import { ConfirmV1 } from "@/components/ConfirmV1";
+import { ConfirmV2 } from "@/components/ConfirmV2";
 import { NoConfirm } from "@/components/NoConfirm";
 
 export default function RootPage() {
   const noConfirmId = crypto.randomUUID();
   const confirmV1Id = crypto.randomUUID();
+  const confirmV2Id = crypto.randomUUID();
   const dialogConfirmId = crypto.randomUUID();
 
   return (
@@ -21,6 +23,7 @@ export default function RootPage() {
         <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 lg:items-center">
           <NoConfirm id={noConfirmId} />
           <ConfirmV1 id={confirmV1Id} />
+          <ConfirmV2 id={confirmV2Id} />
 
           <div className="flex flex-col h-full text-center">
             <div className="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">
