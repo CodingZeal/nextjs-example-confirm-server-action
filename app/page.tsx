@@ -1,7 +1,9 @@
+import { NoConfirm } from "@/components/NoConfirm/NoConfirm";
+
 export default function RootPage() {
-  const timeDialog = new Date().toLocaleTimeString();
-  const timeConfirm = new Date().toLocaleTimeString();
-  const timeNone = new Date().toLocaleTimeString();
+  const noConfirmId = crypto.randomUUID();
+  const jsConfirmId = crypto.randomUUID();
+  const dialogConfirmId = crypto.randomUUID();
 
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -16,27 +18,7 @@ export default function RootPage() {
 
       <div className="mt-12 relative before:absolute before:inset-0 before:-z-[1] before:bg-[radial-gradient(closest-side,#cbd5e1,transparent)] dark:before:bg-[radial-gradient(closest-side,#334155,transparent)]">
         <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3 lg:items-center">
-          <div className="flex flex-col h-full text-center">
-            <div className="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">
-              <span className="mt-7 font-bold text-5xl text-gray-600 dark:text-gray-200">
-                No confirm
-              </span>
-            </div>
-
-            <div className="bg-white flex justify-center lg:mt-px pt-7 px-8 dark:bg-slate-900">
-              {timeNone}
-            </div>
-
-            <div className="bg-white py-8 px-8 dark:bg-slate-900">
-              <button
-                className="inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-600 font-semibold text-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm py-3 px-6 dark:text-blue-500 dark:border-blue-500 dark:hover:border-blue-700"
-                type="button"
-              >
-                Click Me!
-              </button>
-            </div>
-          </div>
-
+          <NoConfirm id={noConfirmId} />
           <div className="flex flex-col h-full text-center">
             <div className="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">
               <span className="mt-7 font-bold text-5xl text-gray-600 dark:text-gray-200">
@@ -45,7 +27,7 @@ export default function RootPage() {
             </div>
 
             <div className="bg-white flex justify-center lg:mt-px pt-7 px-8 dark:bg-slate-900">
-              {timeConfirm}
+              {jsConfirmId}
             </div>
 
             <div className="bg-white py-8 px-8 dark:bg-slate-900">
@@ -66,7 +48,7 @@ export default function RootPage() {
             </div>
 
             <div className="bg-white flex justify-center lg:mt-px pt-7 px-8 dark:bg-slate-900">
-              {timeDialog}
+              {dialogConfirmId}
             </div>
 
             <div className="bg-white py-8 px-8 dark:bg-slate-900">

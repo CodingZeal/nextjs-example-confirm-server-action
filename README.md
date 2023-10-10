@@ -1,5 +1,13 @@
 # Example application: confirm server actions
 
+## Run locally
+
+```
+pnpm install
+pnpm run dev
+open http://localhost:3000
+```
+
 ## Initial app setup
 
 ```
@@ -15,10 +23,20 @@ pnpm create next-app
 
 Tailwind layout: https://preline.co/examples/pricing-sections.html
 
-## Run locally
+### enable experimental flag
+
+https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations
 
 ```
-pnpm install
-pnpm run dev
-open http://localhost:3000
+next.config.ts
+
+experimental: {
+  serverActions: true,
+},
 ```
+
+## Noteworthy
+
+- version of next, node, etc...
+  - add .node-version
+- `useFormStatus` put in child component of `<form`, otherwise it does not seem to work
