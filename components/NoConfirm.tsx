@@ -1,7 +1,7 @@
 "use client";
 
 import { deleteSomething } from "@/app/server-actions";
-import { Button } from "./Button";
+import { ServerActionButton } from "./ServerActionButton";
 
 type Props = {
   id: string;
@@ -26,7 +26,7 @@ export const NoConfirm = ({ id }: Props) => {
         <form action={deleteSomething} className="inline-block">
           <input type="hidden" name="type" value="no-confirm" />
           <input type="hidden" name="id" value={id} />
-          <Button />
+          <ServerActionButton />
         </form>
       </div>
     </div>

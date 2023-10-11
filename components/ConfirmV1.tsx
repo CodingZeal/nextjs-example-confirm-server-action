@@ -1,7 +1,7 @@
 "use client";
 
 import { deleteSomething } from "@/app/server-actions";
-import { Button } from "./Button";
+import { ServerActionButton } from "./ServerActionButton";
 
 type Props = {
   id: string;
@@ -32,7 +32,7 @@ export const ConfirmV1 = ({ id }: Props) => {
         <form action={onSubmit} className="inline-block">
           <input type="hidden" name="type" value="confirm-v1" />
           <input type="hidden" name="id" value={id} />
-          <Button />
+          <ServerActionButton />
         </form>
       </div>
     </div>

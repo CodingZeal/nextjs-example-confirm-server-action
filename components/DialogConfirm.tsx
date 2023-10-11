@@ -3,7 +3,7 @@
 // @ts-ignore
 import { experimental_useFormState as useFormState } from "react-dom";
 import { deleteSomethingWithResponse } from "@/app/server-actions";
-import { Button } from "./Button";
+import { ServerActionButton } from "./ServerActionButton";
 import { Modal, useModal } from "./Modal";
 import { useEffect, useState } from "react";
 
@@ -66,7 +66,7 @@ export const DialogConfirm = ({ id: originalId }: Props) => {
             Cancel
           </button>
 
-          <Button text="Ok" />
+          <ServerActionButton text="Ok" />
         </form>
       </Modal>
     </>

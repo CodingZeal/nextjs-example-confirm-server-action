@@ -7,7 +7,7 @@ type Props = {
   text?: string;
 };
 
-export const Button = ({ text = "Click Me!" }: Props) => {
+export const ServerActionButton = ({ text = "Click Me!" }: Props) => {
   const { pending } = useFormStatus();
 
   const css = [
