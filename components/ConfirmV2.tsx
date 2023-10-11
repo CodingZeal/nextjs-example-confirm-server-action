@@ -9,8 +9,6 @@ type Props = {
 };
 
 export const ConfirmV2 = ({ id }: Props) => {
-  console.log("ConfirmV2 rendered: ", id);
-
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     if (confirm("Are you sure?")) {
       return true;

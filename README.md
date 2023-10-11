@@ -1,5 +1,7 @@
 # Example application: confirm server actions
 
+Examples using server actions that require user confirmation before executing.
+
 ## Run locally
 
 ```
@@ -52,4 +54,6 @@ experimental: {
 ## Resources
 
 - https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations
-- https://tw-elements.com/docs/standard/components/modal/ (tailwind modal css)
+- tailwind css layouts:
+  - `app/page.tsx`: https://preline.co/examples/pricing-sections.html
+  - `components/Modal.tsx`: https://tw-elements.com/docs/standard/components/modal/

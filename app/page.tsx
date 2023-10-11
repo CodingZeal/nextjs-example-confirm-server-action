@@ -18,7 +18,13 @@ export default function RootPage() {
           Confirm server action
         </h2>
         <p className="mt-1 text-gray-600 dark:text-gray-400">
-          TODO: description
+          Some examples using server actions that require confirmation.
+        </p>
+        <p className="mt-1 text-gray-600 dark:text-gray-400">
+          Making use of experimental functions{" "}
+          <span className="text-gray-500 font-serif italic">useFormState</span>{" "}
+          and{" "}
+          <span className="text-gray-500 font-serif italic">useFormStatus</span>
         </p>
       </div>
 

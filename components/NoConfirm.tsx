@@ -8,8 +8,6 @@ type Props = {
 };
 
 export const NoConfirm = ({ id }: Props) => {
-  console.log("NoConfirm rendered: ", id);
-
   return (
     <div className="flex flex-col h-full text-center">
       <div className="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">

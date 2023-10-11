@@ -8,8 +8,6 @@ type Props = {
 };
 
 export const ConfirmV1 = ({ id }: Props) => {
-  console.log("ConfirmV1 rendered: ", id);
-
   const onSubmit = (formData: FormData) => {
     if (confirm("Are you sure?")) {
       deleteSomething(formData);
