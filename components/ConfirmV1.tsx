@@ -19,7 +19,7 @@ export const ConfirmV1 = ({ id }: Props) => {
   return (
     <div className="flex flex-col h-full text-center">
       <div className="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">
-        <span className="mt-7 font-bold text-5xl text-gray-600 dark:text-gray-200">
+        <span className="mt-7 font-bold text-xl text-gray-600 dark:text-gray-200">
           JS confirm V1
         </span>
       </div>
