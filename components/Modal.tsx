@@ -9,8 +9,6 @@ type Props = {
   close: () => void;
 };
 
-// modal css using tailwind: https://tw-elements.com/docs/standard/components/modal/
-
 export const Modal = ({ children, isOpen, close, title, content }: Props) => {
   const modal = isOpen && (
     <div
