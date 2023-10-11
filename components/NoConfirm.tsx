@@ -1,5 +1,3 @@
-"use client";
-
 import { deleteSomething } from "@/app/server-actions";
 import { ServerActionButton } from "./ServerActionButton";
 
