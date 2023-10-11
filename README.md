@@ -37,20 +37,6 @@ experimental: {
 },
 ```
 
-## Noteworthy
-
-- version of next, node, etc...
-  - add .node-version
-- `useFormStatus` put in child component of `<form`, otherwise it does not seem to work
-- js confirm:
-  - show implementation with just action or onSubmit
-- custom dialog for confirmation
-
-  - children as the form/submit button
-  - useEffect to close dialog based on server return value: `useFormState` (not to be confused with `useFormStatus`)
-
-- serverAction signature difference when using `useFormState`, see difference `deleteSomething` vs `deleteSomethingWithResponse`
-
 ## Resources
 
 - https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations
