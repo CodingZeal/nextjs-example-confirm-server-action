@@ -391,6 +391,8 @@ useEffect(() => {
 
 If the response from the server contains `status: "success"` we update the `id` state and close the modal.
 
+Now our UI is updated as expected, the modal closes and the new id is rendered in the UI.
+
 ### Server action signature difference when using `useFormState`
 
 Note the difference in the server action signature when using `useFormState`:
@@ -422,4 +424,4 @@ It's likely because you are using `useFormState` and your server action is not e
 
 ## Conclusion
 
-This article has presented the basics of server actions, and how to use them in combination with actions that require user confirmation. Hopefully you found these examples useful and can apply them to your own projects. Next.js 13 is still in beta and server actions are still experimental, so expect changes and improvements in the future.
+This article has presented the basics of server actions, and how to use them in combination with actions that require user confirmation. Hopefully you found these examples useful and can apply them to your own projects. Next.js 13 allows us to use server actions, but they are still experimental, so expect possible breaking changes and improvements in the future.
