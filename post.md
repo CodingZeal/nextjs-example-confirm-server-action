@@ -191,11 +191,8 @@ type Props = { id: string };
 
 export const ConfirmV2 = ({ id }: Props) => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    if (confirm("Are you sure?")) {
-      return true;
-    } else {
+    if (!confirm("Are you sure?")) {
       e.preventDefault();
-      return false;
     }
   };
 
@@ -208,7 +205,7 @@ export const ConfirmV2 = ({ id }: Props) => {
 };
 ```
 
-When the user confirms the action, the `onSubmit` handler returns `true`, allowing the form to submit. If the user cancels the action, the `onSubmit` handler returns `false`, preventing the form from submitting.
+When the user clicks "OK" to confirm the submission, the `onSubmit` handler just lets the form do its thing and send off the data. But if the user clicks "Cancel", then the `onSubmit` handler uses `preventDefault` stopping the normal form behavior of submitting the data.
 
 ## Custom modal dialog
 

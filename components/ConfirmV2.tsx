@@ -10,11 +10,8 @@ type Props = {
 
 export const ConfirmV2 = ({ id }: Props) => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    if (confirm("Are you sure?")) {
-      return true;
-    } else {
+    if (!confirm("Are you sure?")) {
       e.preventDefault();
-      return false;
     }
   };
 
