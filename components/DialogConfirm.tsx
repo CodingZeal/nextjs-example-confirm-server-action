@@ -40,7 +40,7 @@ export const DialogConfirm = ({ id: originalId }: Props) => {
         </div>
 
         <div className="bg-white py-8 px-8 dark:bg-slate-900">
-          <Button text="Click Me!" onClick={() => open()} />
+          <Button text="Click Me!" onClick={open} />
         </div>
       </div>
 
@@ -54,7 +54,7 @@ export const DialogConfirm = ({ id: originalId }: Props) => {
           <input type="hidden" name="type" value="dialog-confirm" />
           <input type="hidden" name="id" value={id} />
 
-          <Button text="Cancel" onClick={() => close()} className="mr-2" />
+          <Button text="Cancel" onClick={close} className="mr-2" />
           <ServerActionButton text="Ok" />
         </form>
       </Modal>
