@@ -1,26 +1,26 @@
-# Server Actions with User Confirmations in Next.js 13
+# How to use Next.js 13 Server Actions with User Confirmation
 
-Next.js 13 has brought exciting new experimental React features to web development. The combination of server side rendered components and server actions have the potential to simplify web development while still giving us the full power of client side React when we need it.
+Next.js 13 has brought exciting new experimental React features to web development. The combination of server-side rendered components and server actions have the potential to simplify web development while still giving us the full power of client-side React when we need it.
 
 This article introduces the basics of server actions, and how to use them in combination with actions that require user confirmation. This is a common scenario for destructive actions such as deleting a record from a database.
 
-## Sample application
+## Sample Application
 
-This article presumes you're acquainted with setting up and running Next.js applications.
+This article assumes you're acquainted with setting up and running Next.js applications.
 
 To view the code referenced in this article, [checkout the repo](https://github.com/CodingZeal/nextjs-example-confirm-server-action).
 
-This article and accompanying example application utilize Next.js version 13.5.4. Bear in mind that server actions remain in the experimental phase and could evolve.
+This article and accompanying example application utilize Next.js version 13.5.4 configured with TailwindCSS and TypeScript. Bear in mind that server actions remain in the experimental phase and could evolve.
 
 ## A Glimpse at Server Actions
 
-Next.js's server actions empower developers to execute server-side operations directly from the client without the hassle of wiring up HTTP client code. As the Next.js documentation succinctly puts it:
+Next.js's server actions empower developers to execute server-side operations directly from the client without the hassle of wiring up HTTP client code. As the Next.js [documentation](https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations) succinctly puts it:
 
 > With Server Actions, you don't need to manually create API endpoints. Instead, you define asynchronous server functions that can be called directly from your components.
 
 ### Required Next.js Configurations
 
-To leverage server actions, the experimental feature flag must be enabled in your Next.js configuration:
+To leverage server actions, the experimental feature flag must be enabled in your Next.js configuration file (`next.config.js`):
 
 ```ts
 module.exports = {
@@ -57,13 +57,13 @@ export default function SomePage() {
 }
 ```
 
-## Using the experimental `useFormStatus` hook for user feedback
+## Using the Experimental `useFormStatus` Hook for User Feedback
 
 At its core, `useFormStatus` tells us the current state of our form's server action, allowing for dynamic UI updates based on server action outcomes.
 
 The hook currently returns a `pending` property, which is set to true during the form submission process. This can be incredibly useful for preventing multiple submissions and giving users feedback that the form submission is still in process.
 
-Before we continue here is the server action we are calling:
+Before we continue, here is the server action we are calling:
 
 ```ts
 "use server";
@@ -138,13 +138,13 @@ In the code example, the `ServerActionButton` component dynamically alters its a
 
 ### Important!
 
-It's essential to recognize that `useFormStatus` hook must be employed within a child component of the `form` associated with a server action. Use of the hook does not work when placed directly in the form component itself.
+It's essential to recognize that the `useFormStatus` hook must be employed within a child component of the `form` associated with a server action. Use of the hook does not work when placed directly in the form component itself.
 
 ## Are you sure?
 
 When performing destructive actions, it's common to ask the user to confirm their intent before proceeding (`Are you sure?`). This is typically done with a modal dialog, but can also be done with a simple JavaScript `confirm` dialog.
 
-## Using `confirm` with a server action
+## Using `confirm` with a Server Action
 
 The following example shows how to use a JavaScript `confirm` dialog with a server action:
 
@@ -174,9 +174,9 @@ export const ConfirmV1 = ({ id }: Props) => {
 
 This component must be a client component because it uses the `confirm` dialog. The `confirm` dialog is a browser feature and cannot be used on the server. Note the `"use client"` pragma at the top of the file, this tells Next.js to render this component on the client.
 
-We wrap the server action with a client side function, this allows us to use the `confirm` dialog before calling the server action. We must pass the `formData` to the server action so it can be submitted to the server. In this case the client side function is bound to the form action.
+We wrap the server action with a client-side function, this allows us to use the `confirm` dialog before calling the server action. We must pass the `formData` to the server action so it can be submitted to the server. In this case the client-side function is bound to the form action.
 
-## onSubmit with action
+## onSubmit with Action
 
 Here is a variation of the previous example that uses the `onSubmit` form event for the JavaScript `confirm` but still uses the server action for the form action:
 
@@ -207,7 +207,7 @@ export const ConfirmV2 = ({ id }: Props) => {
 
 When the user clicks "OK" to confirm the submission, the `onSubmit` handler just lets the form do its thing and send off the data. But if the user clicks "Cancel", then the `onSubmit` handler uses `preventDefault` stopping the normal form behavior of submitting the data.
 
-## Custom modal dialog
+## Custom Modal Dialog
 
 Sometimes we require more control over the design of the confirmation dialog. In this case we can create a custom modal dialog component and use it in place of the JavaScript `confirm` dialog.
 
@@ -254,13 +254,13 @@ export const DialogConfirm = ({ id }: Props) => {
 };
 ```
 
-This works great! You click the 'submit button' and the modal dialog opens, you confirm the action by clicking the real submit button or cancel the action by clicking the cancel button closing the modal.
+This works great! When a user clicks the submit button, the modal dialog opens up. The user can then confirm the action by clicking the 'real' submit button, or cancel the action by clicking the cancel button (and thereby closing the modal).
 
-Unfortunatly our implementation has an issue that is not immediately obvious. When the form submission is complete the modal remains open. We are controlling the state of the `Modal` by calling the `open` and `close` functions, but we have no way of knowing when the form submission is complete.
+Unfortunately our implementation has an issue that is not immediately obvious. When the form submission is complete the modal remains open. We are controlling the state of the `Modal` by calling the `open` and `close` functions, but we have no way of knowing when the form submission is complete.
 
-## Using `useFormState` to close the modal
+## Using `useFormState` to Close the Modal
 
-The `useFormState` hook is similar to `useFormStatus` but it returns the server action's state after the form has been submitted. This allows us to close the modal when the form submission is complete.
+The `useFormState` hook is similar to `useFormStatus`, but it returns the server action's state after the form has been submitted. This allows us to close the modal when the form submission is complete.
 
 We need to make a few changes to our code to use `useFormState`:
 
@@ -361,7 +361,7 @@ export async function deleteSomethingWithResponse(
 }
 ```
 
-Note the return value, this will be assigned to `formState` in the client component by `useFormState` hook once the submission is complete. It contains the `status` of the server action, a `message` and a random `newId` that we are going to render in the UI.
+The return value will be assigned to the `formState` in the client component by the `useFormState` hook once the submission is complete. It contains the `status` of the server action, a `message` and a random `newId` that we are going to render in the UI.
 
 We need to import `useFormState` from `react-dom`:
 
@@ -376,7 +376,7 @@ We need to pass our server action to the `useFormState` hook:
 const [formState, formAction] = useFormState(deleteSomethingWithResponse, {});
 ```
 
-The `formAction` function is used as the form's action attribute instead of using the server action directly. The `formState` object contains the response from the server, we are going to use the `status` to close the dialog and `newId` to update the UI.
+The `formAction` function is used as the form's action attribute instead of using the server action directly. The `formState` object contains the response from the server. We then use the `status` in that object to close the dialog, and `newId` to update the UI.
 
 Both of these actions will take place inside a `useEffect` when the form submission is complete. The `useEffect` will run when the `status` or `newId` change which will happen when the form submission is complete.
 
@@ -393,9 +393,9 @@ If the response from the server contains `status: "success"` we update the `id` 
 
 Now our UI is updated as expected, the modal closes and the new id is rendered in the UI.
 
-### Server action signature difference when using `useFormState`
+### Server Action Parameter Difference When Using `useFormState`
 
-Note the difference in the server action signature when using `useFormState`:
+Note the difference in the server action parameters when using `useFormState`:
 
 ```ts
 export async function deleteSomethingWithResponse(
@@ -424,4 +424,9 @@ It's likely because you are using `useFormState` and your server action is not e
 
 ## Conclusion
 
-This article has presented the basics of server actions, and how to use them in combination with actions that require user confirmation. Hopefully you found these examples useful and can apply them to your own projects. Next.js 13 allows us to use server actions, but they are still experimental, so expect possible breaking changes and improvements in the future.
+This article presents the basics of server actions in Next.js, and how to use them with actions that require user confirmation. Next.js 13 introduces experimental server actions, so certainly expect breaking changes and improvements in the future.
+
+## Resources
+
+- [https://nextjs.org/docs/app/api-reference/functions/server-actions](https://nextjs.org/docs/app/api-reference/functions/server-actions)
+- [https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations](https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations)
